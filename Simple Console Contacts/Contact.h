@@ -7,6 +7,7 @@ class Contact
 {
 	private:
 		string firstName, lastName, phoneNum, emailAdd, homeAdd;
+		Contact();
 	public:
 		Contact(string first, string last, string phone, string email, string home);
 		string getFirstName();

@@ -9,7 +9,13 @@
 using namespace std;
 
 
-
+Contact::Contact() {
+	firstName = "";
+	lastName = "";
+	phoneNum = "";
+	emailAdd = "";
+	homeAdd = "";
+}
 Contact::Contact(string first, string last, string phone, string email, string home) {
 	firstName = first;
 	lastName = last;
@@ -65,5 +71,5 @@ void Contact::displayContact() {
 void Contact::writeToBook() {
 	ofstream outfile;
 	outfile.open("contactbook.txt", ios::app);
-	outfile << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n" << endl;
+	outfile << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n\n-----" << endl;
 }
