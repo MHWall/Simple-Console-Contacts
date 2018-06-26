@@ -71,5 +71,5 @@ void Contact::displayContact() {
 void Contact::writeToBook() {
 	ofstream outfile;
 	outfile.open("contactbook.txt", ios::app);
-	outfile << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n\n-----" << endl;
+	outfile << firstName << " " << lastName << " " << phoneNum << " " << emailAdd << " " << homeAdd << endl;
 }
