@@ -6,10 +6,11 @@ using namespace std;
 class Contact
 {
 	private:
-		string firstName, lastName, phoneNum, emailAdd, homeAdd;
+		string ID, firstName, lastName, phoneNum, emailAdd, homeAdd;
 	public:
-		Contact(string first, string last, string phone, string email, string home);
+		Contact(string uID, string first, string last, string phone, string email, string home);
 		Contact();
+		string getID();
 		string getFirstName();
 		string getLastName();
 		string getPhoneNum();
@@ -20,6 +21,7 @@ class Contact
 		void setPhoneNum(string phone);
 		void setEmailAdd(string email);
 		void setHomeAdd(string home);
+		void setID(string uID);
 		void displayContact();
 		void writeToBook();
 

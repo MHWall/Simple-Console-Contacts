@@ -10,18 +10,24 @@ using namespace std;
 
 
 Contact::Contact() {
+	ID = "";
 	firstName = "";
 	lastName = "";
 	phoneNum = "";
 	emailAdd = "";
 	homeAdd = "";
 }
-Contact::Contact(string first, string last, string phone, string email, string home) {
+Contact::Contact(string uID, string first, string last, string phone, string email, string home) {
+	ID = uID;
 	firstName = first;
 	lastName = last;
 	phoneNum = phone;
 	emailAdd = email;
 	homeAdd = home;
+}
+
+string Contact::getID() {
+	return ID;
 }
 
 string Contact::getFirstName() {
@@ -42,6 +48,10 @@ string Contact::getEmailAdd() {
 
 string Contact::getHomeAdd() {
 	return homeAdd;
+}
+
+void Contact::setID(string uID) {
+	ID = uID;
 }
 
 void Contact::setFirstName(string first) {
@@ -65,11 +75,17 @@ void Contact::setHomeAdd(string home) {
 }
 
 void Contact::displayContact() {
-	cout << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n" << endl;
+	cout << ID << "\n" << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n" << endl;
 }
 
 void Contact::writeToBook() {
 	ofstream outfile;
 	outfile.open("contactbook.txt", ios::app);
-	outfile << firstName << " " << lastName << " " << phoneNum << " " << emailAdd << " " << homeAdd << endl;
+	outfile << "-----\n" << endl;
+	outfile << "ID:" << ID << endl;
+	outfile << "First:" << firstName << endl;
+	outfile << "Last:" << lastName << endl;
+	outfile << "Phone:" << phoneNum << endl;
+	outfile << "Email:" << emailAdd << endl;
+	outfile << "Home:" << homeAdd << endl;
 }
