@@ -1,3 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Simple Console Phonebook.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Simple Console Contacts.cpp
+d:\projects\visual studio projects\simple console contacts\simple console contacts\simple console contacts.cpp(146): warning C4715: 'searchContacts': not all control paths return a value
   Simple Console Phonebook.vcxproj -> D:\Projects\Visual Studio Projects\Simple Console Contacts\Simple Console Contacts\Debug\Simple Console Contacts.exe
