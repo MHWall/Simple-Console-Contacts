@@ -89,3 +89,12 @@ void Contact::writeToBook() {
 	outfile << "Email:" << emailAdd << endl;
 	outfile << "Home:" << homeAdd << endl;
 }
+
+void Contact::emptyContact() {
+	ID = "";
+	firstName = "";
+	lastName = "";
+	phoneNum = "";
+	emailAdd = "";
+	homeAdd = "";
+}

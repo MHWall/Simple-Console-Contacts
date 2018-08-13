@@ -24,6 +24,7 @@ class Contact
 		void setID(string uID);
 		void displayContact();
 		void writeToBook();
+		void emptyContact();
 
 };
 
