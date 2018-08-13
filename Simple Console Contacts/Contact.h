@@ -6,25 +6,25 @@ using namespace std;
 class Contact
 {
 	private:
-		string ID, firstName, lastName, phoneNum, emailAdd, homeAdd;
+		string mID, mFirstName, mLastName, mPhoneNum, mEmailAdd, mHomeAdd;
 	public:
 		Contact(string uID, string first, string last, string phone, string email, string home);
 		Contact();
-		string getID();
-		string getFirstName();
-		string getLastName();
-		string getPhoneNum();
-		string getEmailAdd();
-		string getHomeAdd();
-		void setFirstName(string first);
-		void setLastName(string last);
-		void setPhoneNum(string phone);
-		void setEmailAdd(string email);
-		void setHomeAdd(string home);
-		void setID(string uID);
-		void displayContact();
-		void writeToBook();
-		void emptyContact();
+		string GetID() const;
+		string GetFirstName() const;
+		string GetLastName() const;
+		string GetPhoneNum() const;
+		string GetEmailAdd() const;
+		string GetHomeAdd() const;
+		void SetFirstName(string first);
+		void SetLastName(string last);
+		void SetPhoneNum(string phone);
+		void SetEmailAdd(string email);
+		void SetHomeAdd(string home);
+		void SetID(string uID);
+		void DisplayContact() const;
+		void WriteToBook() const;
+		void EmptyContact();
 
 };
 

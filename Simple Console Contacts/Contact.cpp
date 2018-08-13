@@ -10,91 +10,91 @@ using namespace std;
 
 
 Contact::Contact() {
-	ID = "";
-	firstName = "";
-	lastName = "";
-	phoneNum = "";
-	emailAdd = "";
-	homeAdd = "";
+	mID = "";
+	mFirstName = "";
+	mLastName = "";
+	mPhoneNum = "";
+	mEmailAdd = "";
+	mHomeAdd = "";
 }
 Contact::Contact(string uID, string first, string last, string phone, string email, string home) {
-	ID = uID;
-	firstName = first;
-	lastName = last;
-	phoneNum = phone;
-	emailAdd = email;
-	homeAdd = home;
+	mID = uID;
+	mFirstName = first;
+	mLastName = last;
+	mPhoneNum = phone;
+	mEmailAdd = email;
+	mHomeAdd = home;
 }
 
-string Contact::getID() {
-	return ID;
+string Contact::GetID() const {
+	return mID.c_str();
 }
 
-string Contact::getFirstName() {
-	return firstName;
+string Contact::GetFirstName() const{
+	return mFirstName.c_str();
 }
 
-string Contact::getLastName() {
-	return lastName;
+string Contact::GetLastName() const{
+	return mLastName.c_str();
 }
 
-string Contact::getPhoneNum() {
-	return phoneNum;
+string Contact::GetPhoneNum() const {
+	return mPhoneNum.c_str();
 }
 
-string Contact::getEmailAdd() {
-	return emailAdd;
+string Contact::GetEmailAdd() const {
+	return mEmailAdd.c_str();
 }
 
-string Contact::getHomeAdd() {
-	return homeAdd;
+string Contact::GetHomeAdd() const{
+	return mHomeAdd.c_str();
 }
 
-void Contact::setID(string uID) {
-	ID = uID;
+void Contact::SetID(string uID) {
+	mID = uID;
 }
 
-void Contact::setFirstName(string first) {
-	firstName = first;
+void Contact::SetFirstName(string first) {
+	mFirstName = first;
 }
 
-void Contact::setLastName(string last) {
-	lastName = last;
+void Contact::SetLastName(string last) {
+	mLastName = last;
 }
 
-void Contact::setPhoneNum(string phone) {
-	phoneNum = phone;
+void Contact::SetPhoneNum(string phone) {
+	mPhoneNum = phone;
 }
 
-void Contact::setEmailAdd(string email) {
-	emailAdd = email;
+void Contact::SetEmailAdd(string email) {
+	mEmailAdd = email;
 }
 
-void Contact::setHomeAdd(string home) {
-	homeAdd = home;
+void Contact::SetHomeAdd(string home) {
+	mHomeAdd = home;
 }
 
-void Contact::displayContact() {
-	cout << ID << "\n" << firstName << " " << lastName << "\n" << phoneNum << "\n" << emailAdd << "\n" << homeAdd << "\n" << endl;
+void Contact::DisplayContact() const{
+	cout << mID << "\n" << mFirstName << " " << mLastName << "\n" << mPhoneNum << "\n" << mEmailAdd << "\n" << mHomeAdd << "\n" << endl;
 }
 
-void Contact::writeToBook() {
+void Contact::WriteToBook() const{
 	ofstream outfile;
 	outfile.open("contactbook.txt", ios::app);
 	outfile << "-----\n" << endl;
-	outfile << "ID:" << ID << endl;
-	outfile << "First:" << firstName << endl;
-	outfile << "Last:" << lastName << endl;
-	outfile << "Phone:" << phoneNum << endl;
-	outfile << "Email:" << emailAdd << endl;
-	outfile << "Home:" << homeAdd << endl;
+	outfile << "ID:" << mID << endl;
+	outfile << "First:" << mFirstName << endl;
+	outfile << "Last:" << mLastName << endl;
+	outfile << "Phone:" << mPhoneNum << endl;
+	outfile << "Email:" << mEmailAdd << endl;
+	outfile << "Home:" << mHomeAdd << endl;
 }
 
-void Contact::emptyContact() {
-	ID = "";
-	firstName = "";
-	lastName = "";
-	phoneNum = "";
-	emailAdd = "";
-	homeAdd = "";
+void Contact::EmptyContact() {
+	mID = "";
+	mFirstName = "";
+	mLastName = "";
+	mPhoneNum = "";
+	mEmailAdd = "";
+	mHomeAdd = "";
 }

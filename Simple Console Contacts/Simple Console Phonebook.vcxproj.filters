@@ -35,7 +35,7 @@
     <ClCompile Include="Contact.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Simple Console Contacts.cpp">
+    <ClCompile Include="SimpleConsoleContacts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
