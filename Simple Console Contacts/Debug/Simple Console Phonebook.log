@@ -1,6 +1,24 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Simple Console Phonebook.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Contact.cpp
-  SimpleConsoleContacts.cpp
-  Generating Code...
-d:\projects\visual studio projects\simple console contacts\simple console contacts\simpleconsolecontacts.cpp(140): warning C4715: 'SearchContacts': not all control paths return a value
-  Simple Console Phonebook.vcxproj -> D:\Projects\Visual Studio Projects\Simple Console Contacts\Simple Console Contacts\Debug\Simple Console Contacts.exe
+  ContactManager.cpp
+d:\projects\visual studio projects\simple console contacts\simple console contacts\contactmanager.cpp(178): error C2678: binary '!=': no operator found which takes a left-hand operand of type 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=std::pair<const std::string,Contact>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xtree(313): note: could be 'bool std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>::operator !=(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>> &) const'
+          with
+          [
+              _Ty=std::pair<const std::string,Contact>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\system_error(306): note: or       'bool std::operator !=(const std::error_condition &,const std::error_condition &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\system_error(301): note: or       'bool std::operator !=(const std::error_condition &,const std::error_code &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\system_error(296): note: or       'bool std::operator !=(const std::error_code &,const std::error_condition &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\system_error(291): note: or       'bool std::operator !=(const std::error_code &,const std::error_code &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\exception(345): note: or       'bool std::operator !=(const std::exception_ptr &,std::nullptr_t) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\exception(340): note: or       'bool std::operator !=(std::nullptr_t,const std::exception_ptr &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\exception(335): note: or       'bool std::operator !=(const std::exception_ptr &,const std::exception_ptr &) noexcept'
+  d:\projects\visual studio projects\simple console contacts\simple console contacts\contactmanager.cpp(178): note: while trying to match the argument list '(std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>, nullptr)'
+          with
+          [
+              _Ty=std::pair<const std::string,Contact>
+          ]

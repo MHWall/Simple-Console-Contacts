@@ -10,6 +10,7 @@ class Contact
 	public:
 		Contact(string uID, string first, string last, string phone, string email, string home);
 		Contact();
+		~Contact();
 		string GetID() const;
 		string GetFirstName() const;
 		string GetLastName() const;
