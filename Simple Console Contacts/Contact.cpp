@@ -17,6 +17,9 @@ Contact::Contact() {
 	mEmailAdd = "";
 	mHomeAdd = "";
 }
+Contact::~Contact()
+{
+}
 Contact::Contact(string uID, string first, string last, string phone, string email, string home) {
 	mID = uID;
 	mFirstName = first;
