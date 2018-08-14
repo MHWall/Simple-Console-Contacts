@@ -30,27 +30,27 @@ Contact::Contact(string uID, string first, string last, string phone, string ema
 }
 
 string Contact::GetID() const {
-	return mID.c_str();
+	return mID;
 }
 
 string Contact::GetFirstName() const{
-	return mFirstName.c_str();
+	return mFirstName;
 }
 
 string Contact::GetLastName() const{
-	return mLastName.c_str();
+	return mLastName;
 }
 
 string Contact::GetPhoneNum() const {
-	return mPhoneNum.c_str();
+	return mPhoneNum;
 }
 
 string Contact::GetEmailAdd() const {
-	return mEmailAdd.c_str();
+	return mEmailAdd;
 }
 
 string Contact::GetHomeAdd() const{
-	return mHomeAdd.c_str();
+	return mHomeAdd;
 }
 
 void Contact::SetID(string uID) {

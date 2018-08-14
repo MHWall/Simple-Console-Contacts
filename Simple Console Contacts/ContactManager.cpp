@@ -7,7 +7,6 @@
 #include <map>
 #include "ContactManager.h"
 
-map<string, Contact*> contactMap;
 
 using namespace std;
 ContactManager::ContactManager(string file)
@@ -102,12 +101,9 @@ void ContactManager::LoadContactBook() {
 				}
 			}
 		}
-	
 	}
 	infile.close();
-	if (loadedContact != nullptr) {
-		delete loadedContact;
-	}
+
 }
 
 
@@ -119,7 +115,6 @@ void ContactManager::LoadContactBook() {
 Contact* ContactManager::SearchMap(string first, string last) {
 	map<string, Contact*>::iterator it;
 	Contact* curContact = new Contact();
-
 	//iterate through map until contact found with same first and last name
 	//or until the end of the entries in contactMap
 	for (it = contactMap.begin(); it != contactMap.end(); it++) {
@@ -128,7 +123,10 @@ Contact* ContactManager::SearchMap(string first, string last) {
 			curContact = it->second;
 		}
 
+
 		if (curContact != nullptr) {
+
+
 			// if the same first and last name that the user entered, display contact and leave loop
 			if ((curContact->GetFirstName().compare(first)) == 0 && (curContact->GetLastName().compare(last)) == 0) {
 				cout << "\n\nYour contact was found:\n " << endl;
@@ -148,9 +146,7 @@ Contact* ContactManager::SearchMap(string first, string last) {
 	//contact does not exist if the iterator got to the end of the contactMap
 	if (it == contactMap.end()) {
 		cout << "You have no such contact in your contact list" << endl;
-		if (curContact != nullptr) {
-			delete curContact;
-		}
+
 		return new Contact();
 	}
 }
@@ -160,6 +156,7 @@ Contact* ContactManager::SearchMap(string first, string last) {
 void ContactManager::BookAdd(Contact* newContact) {
 	cout << "Adding to contact book... \n" << endl;
 	if (newContact!=nullptr) {
+
 		newContact->WriteToBook();
 	}
 }
@@ -217,6 +214,10 @@ void ContactManager::MapEditContact(Contact* editedContact, Contact* newContact)
 				}
 				if (it->second != nullptr && newContact != nullptr) {
 					it->second->SetHomeAdd(newContact->GetHomeAdd());
+				}
+				if (it->second !=nullptr) {
+					delete it->second;
+
 				}
 				
 			}
