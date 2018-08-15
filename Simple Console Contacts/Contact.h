@@ -24,7 +24,7 @@ class Contact
 		void SetHomeAdd(string home);
 		void SetID(string uID);
 		void DisplayContact() const;
-		void WriteToBook() const;
+		void WriteToBook(string userFile) const;
 		void EmptyContact();
 
 };

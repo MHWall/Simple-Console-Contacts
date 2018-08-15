@@ -1,3 +1,11 @@
+/*
+	Developer: Matthew Wall
+
+	ContactManager manages te contacts for the user and 
+	any changes to the contact book occur here.
+*/
+
+
 #include "stdafx.h"
 #include <cstdio>
 #include <iostream>
@@ -9,6 +17,7 @@
 
 
 using namespace std;
+
 ContactManager::ContactManager(string file)
 {
 	mUserFile = file;
@@ -27,17 +36,17 @@ contact to the user and inserts the contact into the map.
 */
 void ContactManager::LoadContactBook() {
 
-	//open file
+	// open file
 	ifstream infile(mUserFile);
 
-	//declare placeholder fields
+	// declare placeholder fields
 	Contact* loadedContact = new Contact();
 	string ID, contactLine, subComp, first, last, phone, email, home;
 
-	//hold position of a colon
+	// hold position of a colon
 	int posCol;
 
-	//loop through each line in the contact book where each line is a contactLine from infile
+	// loop through each line in the contact book where each line is a contactLine from infile
 	while (getline(infile, contactLine)) {
 
 		posCol = contactLine.find(':');
@@ -45,204 +54,258 @@ void ContactManager::LoadContactBook() {
 		// store start of line before a colon for future comparisons
 		subComp = contactLine.substr(0, posCol);
 
-		//compare each line with predetermined string identifiers
+		// compare each line with predetermined string identifiers
 		if (subComp.compare("-----") == 0) {
+
+			//empty the contact if a next contact has been found
 			if (loadedContact != nullptr) {
 				loadedContact->EmptyContact();
 			}
 		}
+
 		else if (subComp.compare("ID") == 0) {
 			ID = contactLine.substr(posCol + 1);
+
+			// set the contact ID
 			if (loadedContact != nullptr) {
 				loadedContact->SetID(ID);
 			}
 		}
+
 		else if (subComp.compare("First") == 0) {
 			first = contactLine.substr(posCol + 1);
+
+			// set the first name of the contact
 			if (loadedContact != nullptr) {
 				loadedContact->SetFirstName(first);
 			}
 		}
+
 		else if (subComp.compare("Last") == 0) {
 			last = contactLine.substr(posCol + 1);
+
+			// set the last name of the contact
 			if (loadedContact != nullptr) {
 				loadedContact->SetLastName(last);
 			}
 		}
+
 		else if (subComp.compare("Phone") == 0) {
 			phone = contactLine.substr(posCol + 1);
+
+			// set the phone number of the contact
 			if (loadedContact != nullptr) {
 				loadedContact->SetPhoneNum(phone);
 			}
 		}
+
 		else if (subComp.compare("Email") == 0) {
 			email = contactLine.substr(posCol + 1);
+
+			// set the email address of the contact
 			if (loadedContact != nullptr) {
 				loadedContact->SetEmailAdd(email);
 			}
 		}
+
 		else if (subComp.compare("Home") == 0) {
 			home = contactLine.substr(posCol + 1);
+
+			// set the home address of the contact
 			if (loadedContact != nullptr) {
 				loadedContact->SetHomeAdd(home);
 			}
 		}
 
-		//if the home address is not empty string, the contact has finished 
-		//loading and the loadedContact is inserted into the map
+		// if the home address is not an empty string, the contact has finished 
+		// loading and the loadedContact is inserted into the map
 		if (loadedContact != nullptr) {
 			if (loadedContact->GetHomeAdd().compare("") != 0) {
+
+				// display the loaded contact to the user
 				cout << "Displaying loaded contact: " << endl;
 				if (loadedContact != nullptr) {
 					loadedContact->DisplayContact();
 				}
+
+				// insert the contact found into the contact map
 				if (loadedContact != nullptr) {
 					contactMap.insert({ loadedContact->GetID(), loadedContact });
 				}
 			}
 		}
 	}
+
+	// close the file
 	infile.close();
 
 }
 
 
-
-
-
-
-
+// SearchMap(first, last) searched the map using the credentials of first and last
+// which represent the required contact's first and last names.
+// Returns: The contact that was found only if the contact was in the map
 Contact* ContactManager::SearchMap(string first, string last) {
+
 	map<string, Contact*>::iterator it;
 	Contact* curContact = new Contact();
-	//iterate through map until contact found with same first and last name
-	//or until the end of the entries in contactMap
+
+	// iterate through the map until the contact has been found or the end 
+	// of the map has been reached
 	for (it = contactMap.begin(); it != contactMap.end(); it++) {
 
 		if (curContact != nullptr) {
+
+			// have curContact store the contact currently in the iterator
 			curContact = it->second;
 		}
 
-
 		if (curContact != nullptr) {
 
-
-			// if the same first and last name that the user entered, display contact and leave loop
+			// if the first and last name are the same in curContact as they are in first and last, 
+			// the contact has been found
 			if ((curContact->GetFirstName().compare(first)) == 0 && (curContact->GetLastName().compare(last)) == 0) {
+
 				cout << "\n\nYour contact was found:\n " << endl;
+
 				if (curContact != nullptr) {
+					// display the contact to the user
 					curContact->DisplayContact();
 				}
+
 				if (curContact != nullptr) {
+					//return the found contact
 					return curContact;
 				}
 			}
+
+			// if there is not a match yet, display a message to the user
 			else {
 				cout << "Searching..." << endl;
 			}
 		}
 	}
 
-	//contact does not exist if the iterator got to the end of the contactMap
+	// contact does not exist if the iterator got to the end of the contactMap
 	if (it == contactMap.end()) {
 		cout << "You have no such contact in your contact list" << endl;
-
 		return new Contact();
 	}
 }
 
-
-
+// BookAdd(newContact) passes along newContact to write into the user's
+// contact book
 void ContactManager::BookAdd(Contact* newContact) {
+
 	cout << "Adding to contact book... \n" << endl;
 	if (newContact!=nullptr) {
-
-		newContact->WriteToBook();
+		// write to the contact book
+		newContact->WriteToBook(mUserFile);
 	}
 }
 
-
+// RewriteClearFile() clears and rewrites to the contact book
 void ContactManager::RewriteClearFile() {
+
 	map<string, Contact*>::iterator it;
 	ofstream clearfile(mUserFile, ios::out | ios::trunc);
 
-
-	//re write every contact back into the contact book
+	// re-write every contact back into the contact book
 	for (it = contactMap.begin(); it != contactMap.end(); it++) {
+		
 		if (it->second !=nullptr) {
-			it->second->WriteToBook();
+
+			// write each contact stored in contactMap to the contact book
+			it->second->WriteToBook(mUserFile);
 		}
 	}
 }
 
-
+// MapRemove(removedContacts) removes the contact stored
+// in removedContact from te contactMap
 void ContactManager::MapRemove(Contact* removedContact) {
 
-	//get the contact id and remove the contact from the contactMap
 	if (removedContact != nullptr) {
+		
+		// get the contact id for removedContact
 		string contID = removedContact->GetID();
 		cout << "removing..." << endl;
+
+		// remove the contact from contactMap
 		contactMap.erase(contID);
 	}
 
+	// rewrite the contact book
 	RewriteClearFile();
-
-
 }
 
+// MapEditContact(editedContact, newContact) edits the editedContact
+// to have the same credentials as newContact
 void ContactManager::MapEditContact(Contact* editedContact, Contact* newContact) {
-	//set it->second's fields to user input
+
 	map<string, Contact*>::iterator it;
+
 	for (it = contactMap.begin(); it != contactMap.end(); it++) {
 
-		//make sure contact is the contact the user wants to edit
-		//if the id of the contact to edit is the same as the current
-		//value stored in the iterator
+		// make sure editedContact is the contact the user wants to edit
+		// if the id of the contact to edit is the same as the current
+		// value stored in the iterator
 		if(editedContact!=nullptr){
 			if (it->first.compare(editedContact->GetID()) == 0) {
+
 				if (it->second != nullptr && newContact != nullptr) {
+					// set the first name to the new first name
 					it->second->SetFirstName(newContact->GetFirstName());
 				}
+
 				if (it->second != nullptr && newContact != nullptr) {
+					// set the last name to the new last name
 					it->second->SetLastName(newContact->GetLastName());
 				}
+
 				if (it->second != nullptr && newContact != nullptr) {
+					// set the phone number to the new phone number
 					it->second->SetPhoneNum(newContact->GetPhoneNum());
 				}
+
 				if (it->second != nullptr && newContact != nullptr) {
+					// set the email address to the new email address
 					it->second->SetEmailAdd(newContact->GetEmailAdd());
 				}
-				if (it->second != nullptr && newContact != nullptr) {
-					it->second->SetHomeAdd(newContact->GetHomeAdd());
-				}
-				if (it->second !=nullptr) {
-					delete it->second;
 
-				}
-				
+				if (it->second != nullptr && newContact != nullptr) {
+					// set the home address to the new home address
+					it->second->SetHomeAdd(newContact->GetHomeAdd());
+				}	
 			}
-			
 		}
 	}
 
+	// rewrite the contact book
 	RewriteClearFile();
 }
 
+// ClearMap() clears all the contacts from the contact book
+// and the contactMap
 void ContactManager::ClearMap() {
+
 	cout << "Clearing contacts... \n" << endl;
 
-	//clear the contact book file
+	// clear the contact book file and the contactMap
 	ofstream clearfile(mUserFile, ios::out | ios::trunc);
+	contactMap.clear();
 
 	cout << "Done clearing contacts... \n" << endl;
-	contactMap.clear();
 }
 
+// DisplayAllContacts() displays all the contacts stored in
+// the contactMap to the user
 void ContactManager::DisplayAllContacts() {
 
 	map<string, Contact*>::iterator it;
 	for (it = contactMap.begin(); it != contactMap.end(); it++) {
 		if (it->second != nullptr) {
+			// display the current contact to the user
 			it->second->DisplayContact();
 		}
 	}
