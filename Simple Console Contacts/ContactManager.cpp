@@ -189,7 +189,7 @@ Contact* ContactManager::SearchMap(string first, string last) {
 	// contact does not exist if the iterator got to the end of the contactMap
 	if (it == contactMap.end()) {
 		cout << "You have no such contact in your contact list" << endl;
-		return nullptr;
+		return new Contact();
 	}
 }
 
