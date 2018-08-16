@@ -3,6 +3,7 @@
   ContactManager.cpp
   SimpleConsoleContacts.cpp
   Generating Code...
-d:\projects\visual studio projects\simple console contacts\simple console contacts\simpleconsolecontacts.cpp(52): warning C4715: 'SearchContacts': not all control paths return a value
+d:\projects\visual studio projects\simple console contacts\simple console contacts\simpleconsolecontacts.cpp(50): warning C4715: 'SearchContacts': not all control paths return a value
 d:\projects\visual studio projects\simple console contacts\simple console contacts\contactmanager.cpp(194): warning C4715: 'ContactManager::SearchMap': not all control paths return a value
+  LINK : D:\Projects\Visual Studio Projects\Simple Console Contacts\Simple Console Contacts\Debug\Simple Console Contacts.exe not found or not built by the last incremental link; performing full link
   Simple Console Phonebook.vcxproj -> D:\Projects\Visual Studio Projects\Simple Console Contacts\Simple Console Contacts\Debug\Simple Console Contacts.exe
