@@ -16,7 +16,9 @@
 using namespace std;
 
 
-Contact::Contact() {
+
+Contact::Contact()
+{
 	mID = "";
 	mFirstName = "";
 	mLastName = "";
@@ -24,10 +26,17 @@ Contact::Contact() {
 	mEmailAdd = "";
 	mHomeAdd = "";
 }
+
+
+
 Contact::~Contact()
 {
 }
-Contact::Contact(string uID, string first, string last, string phone, string email, string home) {
+
+
+
+Contact::Contact(string uID, string first, string last, string phone, string email, string home) 
+{
 	mID = uID;
 	mFirstName = first;
 	mLastName = last;
@@ -35,74 +44,77 @@ Contact::Contact(string uID, string first, string last, string phone, string ema
 	mEmailAdd = email;
 	mHomeAdd = home;
 }
+
+
 
 // get the contact id
-string Contact::GetID() const {
-	return mID;
-}
+string Contact::GetID() const{ return mID; }
+
+
 
 // get the contact first name
-string Contact::GetFirstName() const{
-	return mFirstName;
-}
+string Contact::GetFirstName() const{ return mFirstName; }
+
+
 
 // get the contact last name
-string Contact::GetLastName() const{
-	return mLastName;
-}
+string Contact::GetLastName() const{ return mLastName; }
+
+
 
 // get the contact phone number
-string Contact::GetPhoneNum() const {
-	return mPhoneNum;
-}
+string Contact::GetPhoneNum() const { return mPhoneNum; }
+
+
 
 // get the contact email address
-string Contact::GetEmailAdd() const {
-	return mEmailAdd;
-}
+string Contact::GetEmailAdd() const { return mEmailAdd; }
+
+
 
 // get the contact home address
-string Contact::GetHomeAdd() const{
-	return mHomeAdd;
-}
+string Contact::GetHomeAdd() const{ return mHomeAdd; }
+
+
 
 // set the contact id
-void Contact::SetID(string uID) {
-	mID = uID;
-}
+void Contact::SetID(string uID){ mID = uID; }
+
+
 
 // set the contact first name
-void Contact::SetFirstName(string first) {
-	mFirstName = first;
-}
+void Contact::SetFirstName(string first){ mFirstName = first; }
+
+
 
 // set the contact last name
-void Contact::SetLastName(string last) {
-	mLastName = last;
-}
+void Contact::SetLastName(string last){ mLastName = last; }
+
+
 
 // set the contact phone number
-void Contact::SetPhoneNum(string phone) {
-	mPhoneNum = phone;
-}
+void Contact::SetPhoneNum(string phone){ mPhoneNum = phone; }
+
+
 
 // set the contact email address
-void Contact::SetEmailAdd(string email) {
-	mEmailAdd = email;
-}
+void Contact::SetEmailAdd(string email){ mEmailAdd = email; }
+
+
 
 // set the contact home address
-void Contact::SetHomeAdd(string home) {
-	mHomeAdd = home;
-}
+void Contact::SetHomeAdd(string home){ mHomeAdd = home; }
+
+
 
 // display a contact to output
-void Contact::DisplayContact() const{
-	cout << mID << "\n" << mFirstName << " " << mLastName << "\n" << mPhoneNum << "\n" << mEmailAdd << "\n" << mHomeAdd << "\n" << endl;
-}
+void Contact::DisplayContact() const{ cout << mID << "\n" << mFirstName << " " << mLastName << "\n" << mPhoneNum << "\n" << mEmailAdd << "\n" << mHomeAdd << "\n" << endl; }
+
+
 
 // write a contact to the book
-void Contact::WriteToBook(string userFile) const{
+void Contact::WriteToBook(string userFile) const
+{
 	ofstream outfile;
 	outfile.open(userFile, ios::app);
 	outfile << "-----\n" << endl;
@@ -115,8 +127,11 @@ void Contact::WriteToBook(string userFile) const{
 	outfile.close();
 }
 
+
+
 // empty a contact
-void Contact::EmptyContact() {
+void Contact::EmptyContact()
+{
 	mID = "";
 	mFirstName = "";
 	mLastName = "";
